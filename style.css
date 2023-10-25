@@ -1,0 +1,15 @@
+.clear{
+    display: block;
+    margin: 10px auto;
+}
+
+.container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+#shared-board{
+    margin: 0 auto;
+    border: 1px solid; 
+}
