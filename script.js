@@ -22,6 +22,10 @@ const clear = () => {
     context.clearRect(0, 0, sharedboard.width, sharedboard.height);
 }
 
+connection.on("DrawStart", () => {
+    context.beginPath();
+})
+
 clearButton.addEventListener('click', () => {
     clear();
     console.log(connection.state); 
@@ -40,7 +44,7 @@ const draw = (x, y) => {
 }
 
 connection.on('Draw', (message) => {
-    context.beginPath();
+    //context.beginPath();
     const {x,y} = JSON.parse(message);
     draw(x,y);
 });
@@ -49,6 +53,7 @@ sharedboard.addEventListener('mousedown', (e) => {
     isPainting = true;
     startX = e.clientX;
     startY = e.clientY;
+    connection.invoke("DrawStart");
     context.beginPath();
 });
 
